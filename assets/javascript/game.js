@@ -1,58 +1,66 @@
-var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-var wins = 1;
-var losses = 1;
-var guessLeft = 10;
+//change to lowercase
+var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-function getElementbyId(element) {
-    var information = document.getElementById(element);
-    return information;
-}
+var wins = 0;
+var losses = 0;
+var guessLeft = 0;
+
+var computerChoiceText = document.getElementById("computerChoice-text");
+var yourGuessText= document.getElementById("yourGuess-text");
+var winsText = document.getElementById("Wins");
+var lossesText = document.getElementById("Losses");
+var guessesLeftText = document.getElementById("Guesses Left");
+
+var informationText = document.getElementById("information-text");
+
+    
 
 
 document.onkeyup = function (event) {
 
-    var gameGuessingNumber = Math.floor(Math.random() * letters.length),
+    var userGuess=event.key;
+
+    var gameGuessingNumber = Math.floor(Math.random() * computerChoice.length);
         
-        randomGuess = letters[gameGuessingNumber],
-
-        information = document.createTextNode(event.key + ", ");
-
-    getElementbyId("yourGuess").appendChild(information);
-
-    if (randomGuess === event.key) {
         
-        getElementbyId("wins").textContent = "Wins: " + wins++;
+
+    
+
+    if (gameGuessingNumber === userGuess) {
+        
+        winsText.textContent = "Wins: " + wins++;
         
         if (wins >= 1) {
 
-            getElementbyId("guessesLeft").textContent = "Guess Left: " + 10;
+            guessesLeftText.textContent = "Guess Left: " + 10;
             guessLeft = 9;
 
-            alert("You won!");
+            alert("You must be psychic!");
         }
 
     }
 
     else {
 
-        getElementbyId("guessesLeft").textContent = "Guess Left: " + guessLeft--;
+        guessesLeftText.textContent = "Guess Left: " + guessLeft--;
 
 
         if (guessLeft <= -1) {
 
 
-            getElementbyId("losses").textContent = "Loss: " + losses++;
+            lossesText.textContent = "Loss: " + losses++;
             
-            alert("You Lost! Try Again");
+            alert("Awwww! Looks like you're not psychic, afterall! Try Again");
 
-            getElementbyId("guessesLeft").textContent = "Guess Left: " + 10;
+            guessesLeftText.textContent = "Guess Left: " + 10;
             guessLeft = 9;
-
-
 
         }
 
     }
 
+    
 }
+
+computerChoiceText.textContent = "Computer Choice: " + gameGuessingNumber;
