@@ -1,2 +1,2 @@
 # Psychic-Game
-1st attempt at 3rd assignment
+https://tashma2007.github.io/Psychic-Game/
