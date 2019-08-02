@@ -1,5 +1,5 @@
 
-//change to lowercase
+
 var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 var wins = 0;
@@ -8,13 +8,13 @@ var guessLeft = 0;
 
 var computerChoiceText = document.getElementById("computerChoice-text");
 var yourGuessText= document.getElementById("yourGuess-text");
-var winsText = document.getElementById("Wins");
-var lossesText = document.getElementById("Losses");
+var winsText = document.getElementById("wins");
+var lossesText = document.getElementById("losses");
 var guessesLeftText = document.getElementById("Guesses Left");
 
-var informationText = document.getElementById("information-text");
+var informationText = document.getElementById("information-text");    
 
-    
+
 
 
 document.onkeyup = function (event) {
@@ -23,10 +23,10 @@ document.onkeyup = function (event) {
 
     var gameGuessingNumber = Math.floor(Math.random() * computerChoice.length);
         
-        
-
     
 
+    
+    
     if (gameGuessingNumber === userGuess) {
         
         winsText.textContent = "Wins: " + wins++;
@@ -41,15 +41,15 @@ document.onkeyup = function (event) {
 
     }
 
-    else {
-
+    else { 
+        
         guessesLeftText.textContent = "Guess Left: " + guessLeft--;
 
+        
+        if (guessLeft <= 0) {
 
-        if (guessLeft <= -1) {
 
-
-            lossesText.textContent = "Loss: " + losses++;
+            lossesText.textContent = "Loss: " + losses--;
             
             alert("Awwww! Looks like you're not psychic, afterall! Try Again");
 
@@ -60,7 +60,7 @@ document.onkeyup = function (event) {
 
     }
 
-    
+
 }
 
-computerChoiceText.textContent = "Computer Choice: " + gameGuessingNumber;
+computerChoiceText.textContent = "Computer Choice: " + gameGuessingNumber;   
